@@ -9,16 +9,23 @@ import (
 var spaceDashRegex *regexp.Regexp
 
 func SupercoopMail(firstName string, lastName string) string {
-	return normalize(firstName) + "." + normalize(lastName) + SUPERCOOP_MAIL_SUFFIX
+	return transformFirstName(firstName) + "." + transformLastName(lastName) + SUPERCOOP_MAIL_SUFFIX
 }
 
-// Transforms "Mr Vice Mac-Mahon" to "mrvicemacmahon"
-func normalize(input string) string {
-	return strings.ToLower(removeSpacesAndDashes(input))
+func transformLastName(input string) string {
+	return removeSpacesAndDashes(toLowerAndTrim(input))
+}
+
+func transformFirstName(input string) string {
+	return strings.Replace(toLowerAndTrim(input), " ", "-", -1)
 }
 
 func removeSpacesAndDashes(input string) string {
 	return spaceDashRegex.ReplaceAllString(input, "")
+}
+
+func toLowerAndTrim(input string) string {
+	return strings.ToLower(strings.Trim(input, " "))
 }
 
 func init() {

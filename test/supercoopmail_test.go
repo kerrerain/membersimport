@@ -12,6 +12,8 @@ var mailTestCases = []struct {
 }{
 	{"Randy", "Marsh", "randy.marsh" + membersimport.SUPERCOOP_MAIL_SUFFIX},
 	{"ELIOT", "MAC MAHON-MOH", "eliot.macmahonmoh" + membersimport.SUPERCOOP_MAIL_SUFFIX},
+	{"Jean-Edouard", "schmidt", "jean-edouard.schmidt" + membersimport.SUPERCOOP_MAIL_SUFFIX},
+	{"  Jean Edouard  ", "schmidt", "jean-edouard.schmidt" + membersimport.SUPERCOOP_MAIL_SUFFIX},
 }
 
 func TestSupercoopMail(t *testing.T) {
