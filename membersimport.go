@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	if err := ProcessFile("test.csv", "test_exported.csv"); err != nil {
+	if err := ProcessFile("test.csv", "members_exported.csv"); err != nil {
 		log.Fatal(err.Error())
 	}
 }

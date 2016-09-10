@@ -11,7 +11,8 @@ var mailTestCases = []struct {
 	expected  string
 }{
 	{"Randy", "Marsh", "randy.marsh" + main.SUPERCOOP_MAIL_SUFFIX},
-	{"ELIOT", "MAC MAHON-MOH", "eliot.macmahonmoh" + main.SUPERCOOP_MAIL_SUFFIX},
+	{"ELIOT", "MAHON-MOH", "eliot.mahon" + main.SUPERCOOP_MAIL_SUFFIX},
+	{"Hortense", "Laval Lemans", "hortense.laval" + main.SUPERCOOP_MAIL_SUFFIX},
 	{"Jean-Edouard", "schmidt", "jean-edouard.schmidt" + main.SUPERCOOP_MAIL_SUFFIX},
 	{"  Jean Edouard  ", "schmidt", "jean-edouard.schmidt" + main.SUPERCOOP_MAIL_SUFFIX},
 }
