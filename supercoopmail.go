@@ -8,7 +8,13 @@ import (
 
 var spaceDashRegex *regexp.Regexp
 
-func SupercoopMail(firstName string, lastName string) string {
+type SupercoopMailGenerator interface {
+	Generate(firstName string, lastName string) string
+}
+
+type SupercoopMail struct{}
+
+func (s SupercoopMail) Generate(firstName string, lastName string) string {
 	return transformFirstName(firstName) + "." + transformLastName(lastName) + SUPERCOOP_MAIL_SUFFIX
 }
 

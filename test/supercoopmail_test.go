@@ -17,8 +17,13 @@ var mailTestCases = []struct {
 }
 
 func TestSupercoopMail(t *testing.T) {
+	// Arrange
+	target := membersimport.SupercoopMail{}
+
 	for index, testCase := range mailTestCases {
-		actual := membersimport.SupercoopMail(testCase.firstName, testCase.lastName)
+		// Act
+		actual := target.Generate(testCase.firstName, testCase.lastName)
+		// Assert
 		if actual != testCase.expected {
 			t.Errorf("SupercoopMail(%d): expected %s, actual %s", index, testCase.expected, actual)
 		}
