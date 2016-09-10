@@ -1,4 +1,4 @@
-package membersimport
+package main
 
 import (
 	"log"

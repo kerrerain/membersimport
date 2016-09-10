@@ -1,33 +1,31 @@
-package membersimport
+package main
 
 import (
-	//	"bufio"
-	//	"encoding/csv"
 	"strings"
 )
 
-type Member struct {
-	Id              int    `csv:"AZOUGA"`
-	FirstName       string `csv:"Nom"`
-	LastName        string `csv:"Prénom"`
-	Mail            string `csv:"Courriel"`
-	Street          string `csv:"Adresse"`
-	ZipCode         string `csv:"CP"`
-	City            string `csv:"Ville"`
-	Phone           string `csv:"Tél 1"`
-	Amount          string `csv:"Cotisation"`
-	MethodOfPayment string `csv:"Mode règlement"`
-	Donation        string `csv:"Don"`
-	Bank            string `csv:"Banque"`
-	ChequeNumber    string `csv:"N° chèque"`
-	Date            string `csv:"Date dépôt"`
-	SupercoopMail   string `csv:"Mail Supercoop"`
+func ProcessFile(inputFileName string, outputFileName string) error {
+	// Manual dependency injection
+	return ProcessFileDo(SupercoopMail{}, MemberCsvFileImpl{}, inputFileName, outputFileName)
 }
 
-func ProcessRecord(generator SupercoopMailGenerator, record Member) Member {
+func ProcessFileDo(generator SupercoopMailGenerator, csvFile MemberCsvFileImpl,
+	inputFileName string, outputFileName string) error {
+
+	members, err := csvFile.Fetch(inputFileName)
+
+	for _, member := range members {
+		ProcessRecord(generator, member)
+	}
+
+	err = csvFile.Update(outputFileName, members)
+
+	return err
+}
+
+func ProcessRecord(generator SupercoopMailGenerator, record *Member) {
 	record.SupercoopMail = generator.Generate(record.FirstName, record.LastName)
 	record.Phone = cleanPhone(record.Phone)
-	return record
 }
 
 func cleanPhone(phone string) string {

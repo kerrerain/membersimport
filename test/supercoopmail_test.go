@@ -1,7 +1,7 @@
-package membersimport_test
+package main_test
 
 import (
-	"github.com/supercoopbdx/membersimport"
+	main "github.com/supercoopbdx/membersimport"
 	"testing"
 )
 
@@ -10,15 +10,15 @@ var mailTestCases = []struct {
 	lastName  string
 	expected  string
 }{
-	{"Randy", "Marsh", "randy.marsh" + membersimport.SUPERCOOP_MAIL_SUFFIX},
-	{"ELIOT", "MAC MAHON-MOH", "eliot.macmahonmoh" + membersimport.SUPERCOOP_MAIL_SUFFIX},
-	{"Jean-Edouard", "schmidt", "jean-edouard.schmidt" + membersimport.SUPERCOOP_MAIL_SUFFIX},
-	{"  Jean Edouard  ", "schmidt", "jean-edouard.schmidt" + membersimport.SUPERCOOP_MAIL_SUFFIX},
+	{"Randy", "Marsh", "randy.marsh" + main.SUPERCOOP_MAIL_SUFFIX},
+	{"ELIOT", "MAC MAHON-MOH", "eliot.macmahonmoh" + main.SUPERCOOP_MAIL_SUFFIX},
+	{"Jean-Edouard", "schmidt", "jean-edouard.schmidt" + main.SUPERCOOP_MAIL_SUFFIX},
+	{"  Jean Edouard  ", "schmidt", "jean-edouard.schmidt" + main.SUPERCOOP_MAIL_SUFFIX},
 }
 
 func TestSupercoopMail(t *testing.T) {
 	// Arrange
-	target := membersimport.SupercoopMail{}
+	target := main.SupercoopMail{}
 
 	for index, testCase := range mailTestCases {
 		// Act

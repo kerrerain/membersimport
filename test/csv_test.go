@@ -1,7 +1,7 @@
-package membersimport
+package main_test
 
 import (
-	"github.com/supercoopbdx/membersimport"
+	main "github.com/supercoopbdx/membersimport"
 	"testing"
 )
 
@@ -31,20 +31,20 @@ func TestProcessRecord(t *testing.T) {
 	// Arrange
 	generator := &SupercoopMailMock{}
 
-	record := membersimport.Member{
+	record := &main.Member{
 		FirstName: "John",
 		LastName:  "Doe",
 		Phone:     "06 01 02 03   04",
 	}
 
 	// Act
-	result := membersimport.ProcessRecord(generator, record)
+	main.ProcessRecord(generator, record)
 
 	// Assert
-	if result.SupercoopMail != "dummy.response@supercoop.fr" {
+	if record.SupercoopMail != "dummy.response@supercoop.fr" {
 		t.Error("ProcessRecord: expected SupercoopMail to have been processed")
 	}
-	if result.Phone != "0601020304" {
+	if record.Phone != "0601020304" {
 		t.Error("ProcessRecord: expected Phone to have been processed")
 	}
 }
