@@ -1,7 +1,7 @@
-package main_test
+package adhesion_test
 
 import (
-	main "github.com/supercoopbdx/membersimport"
+	target "github.com/supercoopbdx/membersimport/features/adhesion"
 	"testing"
 )
 
@@ -31,14 +31,14 @@ func TestProcessRecord(t *testing.T) {
 	// Arrange
 	generator := &SupercoopMailMock{}
 
-	record := &main.Member{
+	record := &target.Member{
 		FirstName: "John",
 		LastName:  "Doe",
 		Phone:     "06 01 02 03   04",
 	}
 
 	// Act
-	main.ProcessRecord(generator, record)
+	target.ProcessRecord(generator, record)
 
 	// Assert
 	if record.SupercoopMail != "dummy.response@supercoop.fr" {
