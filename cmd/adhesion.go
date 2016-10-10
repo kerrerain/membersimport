@@ -5,7 +5,6 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/supercoopbdx/membersimport/common"
 	"github.com/supercoopbdx/membersimport/features/adhesion"
-	"time"
 )
 
 func init() {
@@ -22,14 +21,6 @@ var adhesionCmd = &cobra.Command{
 				" Please run './membersimport adhesion <filename>.csv'")
 		}
 
-		return adhesion.ProcessFile(args[0], exportFileName())
+		return adhesion.ProcessFile(args[0], common.ExportFileName("adhesion_exported"))
 	},
-}
-
-func exportFileName() string {
-	return common.EXPORT_FOLDER + "members_exported" + timestamp() + ".csv"
-}
-
-func timestamp() string {
-	return time.Now().Format("20060102150405")
 }
