@@ -1,27 +1,14 @@
 package main
 
 import (
-	"log"
+	"fmt"
+	"github.com/supercoopbdx/membersimport/cmd"
 	"os"
-	"time"
 )
 
 func main() {
-	args := os.Args[1:]
-
-	if len(args) == 0 {
-		log.Fatal("The file to import has not been provided. Please run './membersimport <filename>.csv'")
+	if err := cmd.RootCmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(-1)
 	}
-
-	if err := ProcessFile(args[0], exportFileName()); err != nil {
-		log.Fatal(err.Error())
-	}
-}
-
-func exportFileName() string {
-	return EXPORT_FOLDER + "members_exported" + timestamp() + ".csv"
-}
-
-func timestamp() string {
-	return time.Now().Format("20060102150405")
 }
