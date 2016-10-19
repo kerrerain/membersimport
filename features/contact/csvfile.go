@@ -20,7 +20,7 @@ type Contact struct {
 	Birthday          string `csv:"Date de naissance"`
 	Info              string `csv:"Infos Géné"`
 	Phone             string `csv:"Tél"`
-	WayOfContact      string `csv:"Evènement"`
+	Event             string `csv:"Evènement"`
 	DateOfContact     string `csv:"Date Contact"`
 	Address           string `csv:"Adresse"`
 	Address_ZipCode   string

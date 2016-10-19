@@ -8,6 +8,7 @@ import (
 
 var fullAddressRegexp *regexp.Regexp
 var zipCodeCityRegexp *regexp.Regexp
+var dateRegexp *regexp.Regexp
 
 func ProcessFile(inputFileName string, outputFileName string) error {
 	// Manual dependency injection
@@ -32,6 +33,7 @@ func ProcessRecord(record *Contact) {
 	record.HelloAsso = convertBoolean(record.HelloAsso)
 	record.Phone = cleanPhone(record.Phone)
 	createAddressFields(record)
+	createDateOfContactField(record)
 }
 
 func convertBoolean(input string) string {
@@ -55,7 +57,17 @@ func createAddressFields(record *Contact) {
 	}
 }
 
+func createDateOfContactField(record *Contact) {
+	if len(record.DateOfContact) == 0 {
+		groups := dateRegexp.FindStringSubmatch(record.Event)
+		if len(groups) > 0 {
+			record.DateOfContact = strings.TrimSpace(groups[1])
+		}
+	}
+}
+
 func init() {
 	fullAddressRegexp = regexp.MustCompile("(.*)([0-9]{5})(.*)")
 	zipCodeCityRegexp = regexp.MustCompile("([0-9]{5})(.*)")
+	dateRegexp = regexp.MustCompile("([0-9]{2}/[0-9]{2}/[0-9]{4})")
 }

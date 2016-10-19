@@ -49,6 +49,27 @@ var testCases = []struct {
 			Address_Street: "3 aux près de Mède",
 		},
 	},
+	{
+		&target.Contact{
+			Event: "14/04/2016 - Réunion d'info",
+		},
+		target.Contact{
+			HelloAsso:     "false",
+			Event:         "14/04/2016 - Réunion d'info",
+			DateOfContact: "14/04/2016",
+		},
+	},
+	{
+		&target.Contact{
+			Event:         "Réunion d'info",
+			DateOfContact: "14/04/2016",
+		},
+		target.Contact{
+			HelloAsso:     "false",
+			Event:         "Réunion d'info",
+			DateOfContact: "14/04/2016",
+		},
+	},
 }
 
 func TestProcessRecord(t *testing.T) {
