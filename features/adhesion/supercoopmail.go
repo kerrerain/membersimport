@@ -1,6 +1,7 @@
-package main
+package adhesion
 
 import (
+	"github.com/supercoopbdx/membersimport/common"
 	"strings"
 )
 
@@ -11,7 +12,8 @@ type SupercoopMailGenerator interface {
 type SupercoopMail struct{}
 
 func (s SupercoopMail) Generate(firstName string, lastName string) string {
-	return transformFirstName(firstName) + "." + transformLastName(lastName) + SUPERCOOP_MAIL_SUFFIX
+	return transformFirstName(firstName) + "." + transformLastName(lastName) +
+		common.SUPERCOOP_MAIL_SUFFIX
 }
 
 func transformLastName(input string) string {
