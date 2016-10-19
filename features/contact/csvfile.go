@@ -22,7 +22,10 @@ type Contact struct {
 	Phone             string `csv:"Tél"`
 	WayOfContact      string `csv:"Evènement"`
 	DateOfContact     string `csv:"Date Contact"`
-	Adress            string `csv:"Adresse"`
+	Address           string `csv:"Adresse"`
+	Address_ZipCode   string
+	Address_City      string
+	Address_Street    string
 }
 
 type ContactCsvFile interface {
