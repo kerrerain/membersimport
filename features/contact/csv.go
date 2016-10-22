@@ -75,6 +75,10 @@ func inferType(id int) string {
 	}
 }
 
+func FetchContactsFromCsvFile(inputFileName string) ([]*Contact, error) {
+	return ContactCsvFileImpl{}.Fetch(inputFileName)
+}
+
 func init() {
 	fullAddressRegexp = regexp.MustCompile("(.*)([0-9]{5})(.*)")
 	zipCodeCityRegexp = regexp.MustCompile("([0-9]{5})(.*)")

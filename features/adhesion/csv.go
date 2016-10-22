@@ -31,3 +31,7 @@ func ProcessRecord(generator SupercoopMailGenerator, record *Member) {
 func cleanPhone(phone string) string {
 	return strings.Replace(phone, " ", "", -1)
 }
+
+func FetchAccessionsFromCsvFile(inputFileName string) ([]*Member, error) {
+	return MemberCsvFileImpl{}.Fetch(inputFileName)
+}

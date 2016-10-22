@@ -7,7 +7,7 @@ import (
 )
 
 type Member struct {
-	Id              int    `csv:"AZOUGA"`
+	Id              int    `csv:"N° adhérent"`
 	FirstName       string `csv:"Prénom"`
 	LastName        string `csv:"Nom"`
 	Mail            string `csv:"Courriel"`
