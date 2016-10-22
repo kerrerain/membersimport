@@ -30,6 +30,7 @@ func ProcessFileDo(csvFile ContactCsvFile,
 }
 
 func ProcessRecord(record *Contact) {
+	record.Type = inferType(record.Id)
 	record.HelloAsso = convertBoolean(record.HelloAsso)
 	record.Phone = cleanPhone(record.Phone)
 	createAddressFields(record)
@@ -63,6 +64,14 @@ func createDateOfContactField(record *Contact) {
 		if len(groups) > 0 {
 			record.DateOfContact = strings.TrimSpace(groups[1])
 		}
+	}
+}
+
+func inferType(id int) string {
+	if id == 0 {
+		return "CONTACT"
+	} else {
+		return "ADHERENT"
 	}
 }
 
