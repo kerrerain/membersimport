@@ -1,3 +1,4 @@
 membersimport
 *.csv
 exports/*.csv
+vendor/
