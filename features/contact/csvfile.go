@@ -26,6 +26,7 @@ type Contact struct {
 	Address_ZipCode   string
 	Address_City      string
 	Address_Street    string
+	Type              string
 }
 
 type ContactCsvFile interface {
